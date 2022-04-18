@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MymodelComponent } from './mymodel.component';
+import { MymodelComponent } from './mymodal.component';
 
 describe('MymodelComponent', () => {
   let component: MymodelComponent;
