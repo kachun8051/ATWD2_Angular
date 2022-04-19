@@ -30,7 +30,7 @@ export class MymodelComponent implements OnInit {
   constructor(fb: FormBuilder, http: HttpClient) {
     console.log("mymodal's constructor");
     this.validateForm = fb.group({
-      GIHS: [null, [Validators.required]],
+      GIHS: [null],
       name: [null, [Validators.required]],
       district: [null, [Validators.required]],
       address: [null, [Validators.required]],
@@ -83,19 +83,19 @@ export class MymodelComponent implements OnInit {
         objTarget['GIHS'] = val;
         break;
       case 'name':
-        objTarget['name'] = val;
+        objTarget['Name_en'] = val;
         break;
       case 'district':
-        objTarget['district'] = val;
+        objTarget['District_en'] = val;
         break;
       case 'address':
-        objTarget['address'] = val;
+        objTarget['Address_en'] = val;
         break;
       case 'longitude':
-        objTarget['longitude'] = val;
+        objTarget['Longitude'] = val;
         break;
       case 'latitude':
-        objTarget['latitude'] = val;
+        objTarget['Latitude'] = val;
         break;
       default:
         objTarget['unknown'] = val;
@@ -123,13 +123,18 @@ export class MymodelComponent implements OnInit {
       }
     }
     console.log("submitting: " + JSON.stringify(params));
-    if (this.isEdit) {
-      this.http.put('http://localhost:3000/users/' + this.data['GIHS'], params).subscribe((res) => {
+    let url = "http://localhost/ATWD_Project_2021/controller.php/barbecue"; 
+    if (this.isEdit) {   
+      console.log("before put.");   
+      this.http.put(url, params).subscribe((res) => {
         this.clickEvent.emit();
+        this.isVisible = false;
       });
     } else {
-      this.http.post('http://localhost:3000/users', params).subscribe((res) => {
+      console.log("before post.");
+      this.http.post(url, params).subscribe((res) => {
         this.clickEvent.emit();
+        this.isVisible = false;
       });
     }
     this.isVisibleChange.emit(false);

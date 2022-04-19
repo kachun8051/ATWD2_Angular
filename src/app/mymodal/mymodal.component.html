@@ -9,7 +9,7 @@
               </span>
             </nz-form-label>
             <nz-form-control [nzSm]="14" [nzXs]="24">
-              <input nz-input id="GIHS" formControlName="GIHS">
+              <input nz-input id="GIHS" formControlName="GIHS" readonly="true">
               <ng-template #emailErrorTpl let-control>
                   <ng-container *ngIf="validateForm.get('GIHS')?.dirty && validateForm.get('GIHS')?.errors">Please input GIHS!</ng-container>
               </ng-template>
