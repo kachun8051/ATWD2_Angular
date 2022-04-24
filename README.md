@@ -1,4 +1,4 @@
-# ATWD2Angular
+# ATWD2Angular (Draft)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
@@ -6,11 +6,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 The server side is PHP programming refering to [https://github.com/kachun8051/ATWD_Project_2021.git](https://github.com/kachun8051/ATWD_Project_2021.git)
 
+
 ## Deployment
 
 When you downloaded the codes and open folder by Visual Studio Code, please input: npm install in terminal to fetch the required library.
 
+![/images/NpmInstall.png](/images/NpmInstall.png)
 
+## Project running in Browser
+
+![/images/AngularDraft.png](/images/AngularDraft.png)
+
+## Project demostrating in YouTube
+
+![/images/YouTube.png](https://youtu.be/w6bqG9edGiU)
 
 ## Development server
 
