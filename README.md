@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
 
+## Server side
+
+The server side is PHP programming refering to [https://github.com/kachun8051/ATWD_Project_2021.git](https://github.com/kachun8051/ATWD_Project_2021.git)
+
+## Deployment
+
+When you downloaded the codes and open folder by Visual Studio Code, please input: npm install in terminal to fetch the required library.
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
