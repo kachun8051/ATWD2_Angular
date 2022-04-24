@@ -144,7 +144,7 @@ export class MymodelComponent implements OnInit {
 
   showModal(): void {
     this.isVisible = true;
-    //this.modalTitle = mtitle;
+    this.title = 'The first Modal';
   }
 
   handleOk(): void {

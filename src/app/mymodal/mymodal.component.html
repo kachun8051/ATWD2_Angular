@@ -1,5 +1,5 @@
 <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
         <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
           <nz-form-item>

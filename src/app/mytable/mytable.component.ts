@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { BbqRecord } from '../BbqRecord.model';
+import { BbqRecord, clsBbq } from '../BbqRecord.model';
 //import { MymodelComponent } from '../mymodal/mymodal.component';
 /*
 interface DataItem {
@@ -126,10 +126,13 @@ export class MytableComponent implements OnInit {
   // DELETE
   deleteBbq(data: BbqRecord) {
     console.log("Delete is clicked");
+    let obj = new clsBbq();
+    obj.setBbqRecord(data);
+    let content = obj.getBbqRecord();
     //return;
     this.confirmModal = this.modalService.confirm({
       nzTitle: 'Alert',
-      nzContent: 'Confirm to delete?',
+      nzContent: 'Confirm to delete?<br/>' + content,
       nzOkText: 'Delete',
       nzCancelText: 'Cancel',
       nzOnOk: () => {
