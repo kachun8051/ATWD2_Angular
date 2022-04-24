@@ -11,15 +11,15 @@ The server side is PHP programming refering to [https://github.com/kachun8051/AT
 
 When you downloaded the codes and open folder by Visual Studio Code, please input: npm install in terminal to fetch the required library.
 
-![/images/NpmInstall.png](/images/NpmInstall.png)
+![/images/NpmInstall.png](/imagesforreadme/NpmInstall.png)
 
 ## Project running in Browser
 
-![/images/AngularDraft.png](/images/AngularDraft.png)
+![/images/AngularDraft.png](/imagesforreadme/AngularDraft.png)
 
 ## Project demostrating in YouTube
 
-![/images/YouTube.png](https://youtu.be/w6bqG9edGiU)
+![https://youtu.be/w6bqG9edGiU](/imagesforreadme/YouTube.png)
 
 ## Development server
 
