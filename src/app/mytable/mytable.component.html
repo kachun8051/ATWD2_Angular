@@ -1,4 +1,4 @@
-<button (click)="addBbq()" nz-button [nzType]="'primary'" style="margin: 20px; width: 100px;">Add</button>
+<button (click)="addBbq('Add BBQ')" nz-button [nzType]="'primary'" style="margin: 20px; width: 100px;">Add</button>
 
 <nz-table #bbqTable [nzData]="listOfData" nzBordered nzSize="middle">
     <thead>
@@ -22,11 +22,15 @@
         <td>{{ data.address }}</td>
         <td>{{ data.longitude }}</td>
         <td>{{ data.latitude }}</td>
-        <td><a (click)="editBbq(data)">Edit</a></td>
+        <td><a (click)="editBbq(data, 'Edit BBQ')">Edit</a></td>
         <td><a (click)="deleteBbq(data)" style="color:red">Delete</a></td>
       </tr>
     </tbody>
   </nz-table>
 
-  <app-mymodal [data]="editData" [(isVisible)]="modalIsVisible" (clickEvent)="clickEvent()">
+  <app-mymodal 
+    [data]="editData" 
+    [(isVisible)]="modalIsVisible" 
+    (clickEvent)="clickEvent()"
+    [title]="modalTitle">
   </app-mymodal>

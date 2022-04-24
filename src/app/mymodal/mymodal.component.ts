@@ -24,6 +24,7 @@ export class MymodelComponent implements OnInit {
 
   isEdit: boolean;
   validateForm: FormGroup;
+  //modalTitle: string;
   http !: HttpClient;
   emptyRecord: BbqRecord;
 
@@ -31,11 +32,11 @@ export class MymodelComponent implements OnInit {
     console.log("mymodal's constructor");
     this.validateForm = fb.group({
       GIHS: [null],
-      name: [null, [Validators.required]],
-      district: [null, [Validators.required]],
-      address: [null, [Validators.required]],
-      longitude: [null, [Validators.required]],
-      latitude: [null, [Validators.required]]
+      name: [null, [Validators.required, Validators.minLength(5)]],
+      district: [null, [Validators.required, Validators.minLength(5)]],
+      address: [null, [Validators.required, Validators.minLength(10)]],
+      longitude: [null, [Validators.required, Validators.pattern("^-{0,1}[0-9]{1,3}-[0-9]{1,2}-[0-9]{1,2}$")]],
+      latitude: [null, [Validators.required, Validators.pattern("^-{0,1}[0-9]{1,3}-[0-9]{1,2}-[0-9]{1,2}$")]]
     });
     this.http = http;
     this.emptyRecord = {
@@ -50,6 +51,7 @@ export class MymodelComponent implements OnInit {
     this.isVisible = false;
     this.isEdit = false;
     this.title = '';
+    //this.modalTitle = '';
   }
 
   ngOnInit(): void {
@@ -58,23 +60,22 @@ export class MymodelComponent implements OnInit {
   ngOnChanges() {
     console.log("mymodal.ngOnChanges");
     console.log("data input from mytable: " + JSON.stringify(this.data));
-    console.log("GIHS: " + this.data['GIHS']);
+    console.log("GIHS: " + this.data['GIHS']);;
     this.isVisible = true;
     //return;
     if (this.data['GIHS'] !== '') {
-      this.isEdit = true;      
-      this.validateForm.setValue({
-        GIHS: this.data['GIHS'],
-        name: this.data['name'],
-        district: this.data['district'],
-        address: this.data['address'],
-        longitude: this.data['longitude'],
-        latitude: this.data['latitude']
-      });
+      this.isEdit = true; 
     } else {
-      this.isEdit = false;
-      this.validateForm.setValue( this.emptyRecord );
+      this.isEdit = false;      
     }
+    this.validateForm.setValue({
+      GIHS: this.data['GIHS'],
+      name: this.data['name'],
+      district: this.data['district'],
+      address: this.data['address'],
+      longitude: this.data['longitude'],
+      latitude: this.data['latitude']
+    });
   }
 
   assignObject(objTarget: Record<string, unknown>, key: string, val: string){
@@ -111,6 +112,7 @@ export class MymodelComponent implements OnInit {
       this.validateForm.controls[key].markAsDirty();
       this.validateForm.controls[key].updateValueAndValidity();
       if (!(this.validateForm.controls[key].status == 'VALID') && this.validateForm.controls[key].status !== 'DISABLED') {
+        console.log("key: " + key + " Not validated!");
         return;
       }
       if (this.validateForm.controls[key] && this.validateForm.controls[key].value) {
@@ -142,6 +144,7 @@ export class MymodelComponent implements OnInit {
 
   showModal(): void {
     this.isVisible = true;
+    //this.modalTitle = mtitle;
   }
 
   handleOk(): void {

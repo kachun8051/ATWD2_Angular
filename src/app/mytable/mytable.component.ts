@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { BbqRecord } from '../BbqRecord.model';
-import { MymodelComponent } from '../mymodal/mymodal.component';
+//import { MymodelComponent } from '../mymodal/mymodal.component';
 /*
 interface DataItem {
   GIHS: string;
@@ -23,8 +23,11 @@ export class MytableComponent implements OnInit {
   http !: HttpClient;
   // edit data
   editData!: BbqRecord;
+  // empty record is for add process
+  emptyRecord: BbqRecord;
   // flag / indicator of showing modal
   modalIsVisible: boolean;
+  modalTitle: string;
   // dialog
   confirmModal!: NzModalRef;
   modalService!: NzModalService;
@@ -44,6 +47,16 @@ export class MytableComponent implements OnInit {
     this.listOfData = [];
     this.modalIsVisible = false;
     this.modalService = modal;
+    // empty record for add process
+    this.emptyRecord = {
+      GIHS: '',
+      name: '',
+      district: '',
+      address: '',
+      longitude: '',
+      latitude: ''
+    } 
+    this.modalTitle = '';
   }
 
   ngOnInit(): void {
@@ -94,30 +107,34 @@ export class MytableComponent implements OnInit {
   }
 
   // INSERT
-  addBbq() {
-    //this.editData = {};
-    //this.modalIsVisible = true;
+  addBbq(mTitle: string) {
+    console.log("Add is clicked")
+    this.editData = this.emptyRecord;
+    this.modalIsVisible = true;
+    this.modalTitle = mTitle;
   }
 
   // UPDATE
-  editBbq(data: BbqRecord) {
+  editBbq(data: BbqRecord, mTitle: string) {
     console.log("Edit is clicked");
     //console.log(JSON.stringify(data));
     this.editData = data;    
     this.modalIsVisible = true;
+    this.modalTitle = mTitle;
   }
 
   // DELETE
   deleteBbq(data: BbqRecord) {
     console.log("Delete is clicked");
-    return;
+    //return;
     this.confirmModal = this.modalService.confirm({
       nzTitle: 'Alert',
       nzContent: 'Confirm to delete?',
       nzOkText: 'Delete',
       nzCancelText: 'Cancel',
       nzOnOk: () => {
-        this.http.delete('http://localhost:3000/users/' + data['GIHS']).subscribe((res) => {
+        let url = "http://localhost/ATWD_Project_2021/controller.php/barbecue/GIHS/"
+        this.http.delete(url + data['GIHS']).subscribe((res) => {
           this.getListData();
         });
       }
