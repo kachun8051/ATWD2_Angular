@@ -1,0 +1,39 @@
+Folder PATH listing for volume OS
+Volume serial number is DE68-BBD0
+C:.
+|   favicon.ico
+|   index.html
+|   main.ts
+|   OutputTree.doc
+|   polyfills.ts
+|   styles.css
+|   test.ts
+|   theme.less
+|   
++---app
+|   |   app.component.css
+|   |   app.component.html
+|   |   app.component.spec.ts
+|   |   app.component.ts
+|   |   app.module.ts
+|   |   BbqRecord.model.ts
+|   |   
+|   +---mymodal
+|   |       mymodal.component.css
+|   |       mymodal.component.html
+|   |       mymodal.component.spec.ts
+|   |       mymodal.component.ts
+|   |       
+|   \---mytable
+|           mytable.component.css
+|           mytable.component.html
+|           mytable.component.spec.ts
+|           mytable.component.ts
+|           
++---assets
+|       .gitkeep
+|       
+\---environments
+        environment.prod.ts
+        environment.ts
+        

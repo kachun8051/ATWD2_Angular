@@ -128,15 +128,29 @@ export class MymodelComponent implements OnInit {
     let url = "http://localhost/ATWD_Project_2021/controller.php/barbecue"; 
     if (this.isEdit) {   
       console.log("before put.");   
-      this.http.put(url, params).subscribe((res) => {
-        this.clickEvent.emit();
-        this.isVisible = false;
+      this.http.put(url, params).subscribe({
+        next: (res) => { 
+          console.log("Edit success.")
+          this.clickEvent.emit();
+          this.isVisible = false; 
+        },
+        error: (err) => { 
+          //this.serverData = "Server call failed: " + err;
+          console.log("Edit error" + err);
+        }
       });
-    } else {
+    } 
+    else {
       console.log("before post.");
-      this.http.post(url, params).subscribe((res) => {
-        this.clickEvent.emit();
-        this.isVisible = false;
+      this.http.post(url, params).subscribe({
+        next: (res) => {
+          console.log("Insert success.");
+          this.clickEvent.emit();
+          this.isVisible = false;      
+        },
+        error: (err) => {
+          console.log("Insert error" + err);
+        }
       });
     }
     this.isVisibleChange.emit(false);

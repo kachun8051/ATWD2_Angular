@@ -22,7 +22,7 @@
         <td>{{ data.address }}</td>
         <td>{{ data.longitude }}</td>
         <td>{{ data.latitude }}</td>
-        <td><a (click)="editBbq(data, 'Edit BBQ')">Edit</a></td>
+        <td><a (click)="editBbq('Edit BBQ', data)">Edit</a></td>
         <td><a (click)="deleteBbq(data)" style="color:red">Delete</a></td>
       </tr>
     </tbody>

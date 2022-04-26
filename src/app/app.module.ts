@@ -14,7 +14,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+// import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 registerLocaleData(en);

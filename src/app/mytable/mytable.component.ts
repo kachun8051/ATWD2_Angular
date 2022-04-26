@@ -87,6 +87,7 @@ export class MytableComponent implements OnInit {
       arrTmp.push(obj);
     }    
     this.listOfData = arrTmp;
+    console.log("data source is set.");
     //this.dataSource = this.myDataSource;
   }
 
@@ -96,7 +97,8 @@ export class MytableComponent implements OnInit {
     this.http.get(myurl).subscribe(
       {      
         next: (res) => {
-          console.log(res);
+          // console.log(res);
+          console.log("data is fetched successfully.");
           this.fillData(res);          
         },
         error: (err) => {
@@ -115,9 +117,9 @@ export class MytableComponent implements OnInit {
   }
 
   // UPDATE
-  editBbq(data: BbqRecord, mTitle: string) {
+  editBbq(mTitle: string, data: BbqRecord) {
     console.log("Edit is clicked");
-    //console.log(JSON.stringify(data));
+    //console.log(JSON.stringify(data));    
     this.editData = data;    
     this.modalIsVisible = true;
     this.modalTitle = mTitle;
@@ -137,12 +139,17 @@ export class MytableComponent implements OnInit {
       nzCancelText: 'Cancel',
       nzOnOk: () => {
         let url = "http://localhost/ATWD_Project_2021/controller.php/barbecue/GIHS/"
-        this.http.delete(url + data['GIHS']).subscribe((res) => {
-          this.getListData();
+        this.http.delete(url + data['GIHS']).subscribe({
+          next: (res) => {      
+            console.log("Delete success.")      
+            this.getListData();        
+          },
+          error: (err) => {
+            console.log("Delete error" + err);
+          }
         });
       }
-    });
-    
+    });    
   }
 
   // callback when add or edit completed
